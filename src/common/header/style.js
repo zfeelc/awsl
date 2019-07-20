@@ -16,7 +16,7 @@ export const Logo = styled.a.attrs({
     height:56px;
     width:100px;
     display:block;
-    background:url(${logoPic});
+    background:url(${logoPic});       //不能直接写路径‘’，会被看成是一个字符串。
     background-size:contain;
 `
 export const Nav = styled.div`
@@ -32,8 +32,8 @@ export const NavItem = styled.div`
 line-height:56px;
 padding:0 15px;
 font-size:17px;
-color:#333;
-    &.left{                      
+color:#333;          
+    &.left{                    //&字符可以引用  自己的className，不添加则是引用子元素的className
         float:left;
         
     }
@@ -45,13 +45,42 @@ color:#333;
         color:#ea6f5a;
     }
 `
+export const SearchWrapper = styled.div`
+float:left;
+position:relative;
+.slide-enter{
+transition:all .2s ease-out;
+}
+.slide-enter-active{
+width:240px;
+}
+.silde-exit{
+    transition:all .2s ease-out;
+}
+.silde-exit-active{
+    width:160px;
+}
+.iconfont{
+    position:absolute;
+    right:5px;
+    bottom :5px;
+    width:30px;
+    line-height:30px;
+    border-radius:15px;
+    text-align:center;
+    &.focused{
+        background:#777;
+        color:#fff;
+    }
+}
+`
 export const NavSearch = styled.input.attrs({
     placeholder:'搜索'
 })`
 width:160px;
 height:38px;
 border:none;
-out-line:none;
+outline:none;
 border-radius:19px;
 background:#eee;
 margin-top:9px;
@@ -59,7 +88,11 @@ margin-left:20px;
 &::placeholder{
     color:#999;
 }
-padding:0,20px;
+&.focused{
+    width:240px;  
+}
+color:#666;
+padding:0,30px,20px;
 font-size:14px;
 `
 export const Addition = styled.div`
